@@ -1,0 +1,13 @@
+name: ci 🧪
+on: [push]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install --also=dev
+      - name: Cypress run
+        run: npx cypress run --env user_name=${{ secrets.user_name }},user_password=${{ secrets.user_password }}
