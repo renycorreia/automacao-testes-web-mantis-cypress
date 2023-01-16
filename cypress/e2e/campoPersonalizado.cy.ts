@@ -62,12 +62,15 @@ describe('Desafio Base2 | Automação Web', {
 
         cy.get('[href="bug_report_page.php"]').click()
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
-
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
-
+            })
+        cy.get('#category_id').select('[Todos os Projetos] General')
         cy.get('.category').should('contain.text', randomText)
     })
 

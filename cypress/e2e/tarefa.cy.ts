@@ -23,11 +23,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -48,11 +53,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -88,11 +98,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -141,11 +156,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -180,11 +200,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -211,11 +236,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -249,11 +279,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -286,11 +321,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -323,11 +363,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -360,11 +405,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -397,11 +447,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -434,11 +489,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -474,11 +534,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 
@@ -498,7 +563,7 @@ describe('Desafio Base2 | Automação Web', {
 
             cy.get('.btn').invoke('attr', 'val').contains('Mover').click()
 
-            cy.get('select[name="project_id"]').select(1)
+            cy.get('select[name="project_id"]').select('- Projeto auxiliar')
 
             cy.get('.btn').invoke('attr', 'val').contains('Mover Tarefas').click()
 
@@ -518,11 +583,16 @@ describe('Desafio Base2 | Automação Web', {
                 }
             })
 
-        cy.get('#select-project-id').select('- Projeto default')
+        cy.get('h4')
+            .then($titulo => {
+                if ($titulo.text().includes('Escolher Projeto')) {
+                    cy.get('#select-project-id').select('- Projeto default')
+                    cy.get('.btn').contains('Selecionar Projeto').click()
+                }
 
-        cy.get('.btn').contains('Selecionar Projeto').click()
+            })
 
-        cy.get('#category_id').select('[Todos os Projetos] - Categoria default')
+        cy.get('#category_id').select('[Todos os Projetos] General')
 
         var resumo = faker.commerce.productDescription();
 

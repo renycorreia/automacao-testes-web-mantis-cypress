@@ -32,5 +32,6 @@ export default defineConfig({
         allureReuseAfterSpec: true
     },
     baseUrl: 'http://localhost:8989',
+    redirectionLimit: 100
   }
 })

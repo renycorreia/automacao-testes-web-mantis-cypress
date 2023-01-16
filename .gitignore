@@ -5,4 +5,5 @@ cypress/reports
 allure-results
 allure-report
 cypress.env.json
+newUsers.json
 ~$*
