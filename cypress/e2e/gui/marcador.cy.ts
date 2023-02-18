@@ -9,6 +9,12 @@ describe('Desafio Base2 | Automação Web', {
 }, () => {
     const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
+    before(function () {
+        cy.login()
+        cy.gui_apagaTodosMarcadores()
+        cy.api_deleteAllProjects()
+    })
+
     beforeEach(function () {
         cy.login()
         cy.acessarMenuLateral('Gerenciar')

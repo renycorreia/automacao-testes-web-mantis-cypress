@@ -29,5 +29,21 @@ declare namespace Cypress {
 		 * Validar queda de sessão na aplicação
 		 */
 		validaSessaoAplicacao(): Chainable<any>
+
+		api_createProject(project: any): Chainable<any>
+
+		api_getAllProjects(): Chainable<any>
+
+		api_deleteProject(projectId: any): Chainable<any>
+
+		api_deleteAllProjects(): Chainable<any>
+
+		gui_apagaTodosCamposCustomizado(): Chainable<any>
+
+		gui_apagaTodasCategoriasPossiveis(): Chainable<any>
+
+		gui_apagaTodosMarcadores(): Chainable<any>
+
+		gui_apagaTodosUsuarioSemUso(): Chainable<any>
 	}
 }

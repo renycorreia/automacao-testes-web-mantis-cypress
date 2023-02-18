@@ -8,6 +8,10 @@ describe('Desafio Base2 | Automação Web', {
     }
 }, () => {
 
+    before(function () {
+        cy.api_deleteAllProjects()
+    })
+
     beforeEach(function () {
         cy.login()
         cy.visit('/')

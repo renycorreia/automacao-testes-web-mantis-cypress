@@ -1,6 +1,16 @@
 /// <reference types = "Cypress" />
 import { faker } from '@faker-js/faker'
 
+const projetoDefault = {
+    name: `- Projeto default`,
+    description: faker.commerce.productDescription()
+  }
+
+  const projetoAuxiliar = {
+    name: `- Projeto auxiliar`,
+    description: faker.commerce.productDescription()
+  }
+
 describe('Desafio Base2 | Automação Web', {
     retries: {
         runMode: 3,
@@ -8,6 +18,12 @@ describe('Desafio Base2 | Automação Web', {
     }
 }, () => {
     const TRHEE_SECONDS_IN_MILLISECONDS = 3000
+
+    before(function () {
+        cy.api_deleteAllProjects()
+        cy.api_createProject(projetoDefault)
+        cy.api_createProject(projetoAuxiliar)
+    })
 
     beforeEach(function () {
         cy.login()

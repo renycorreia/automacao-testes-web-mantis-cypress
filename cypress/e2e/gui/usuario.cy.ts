@@ -9,6 +9,9 @@ describe('Desafio Base2 | Automação Web', {
 }, () => {
 
     before(() => {
+        cy.login()
+        cy.gui_apagaTodosUsuarioSemUso()
+
         cy.task('readXlsx', { file: 'cypress/fixtures/newUsers.xlsx', sheet: "users" })
             .then((newUsers) => {
                 cy.writeFile("cypress/fixtures/newUsers.json", { newUsers })

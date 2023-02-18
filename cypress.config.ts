@@ -29,9 +29,12 @@ export default defineConfig({
         return config;
     },
     env: {
-        allureReuseAfterSpec: true
+      allureReuseAfterSpec: true,
+      hideCredentials: true,
+      requestMode: true
     },
     baseUrl: 'http://localhost:8989',
-    redirectionLimit: 100
+    redirectionLimit: 100,
+    experimentalRunAllSpecs: true
   }
 })
