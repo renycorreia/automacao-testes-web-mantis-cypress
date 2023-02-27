@@ -5,7 +5,8 @@
     "types": ["cypress", "node", "@shelex/cypress-allure-plugin", "cypress-plugin-api"],
     "allowJs": true,
     "baseUrl": "./",
-    "noEmit": true
+    "noEmit": true,
+    "strict": true
   },
   "include": ["**/*.ts"]
 }
