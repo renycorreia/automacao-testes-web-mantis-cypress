@@ -29,90 +29,164 @@ describe('Desafio Base2 | Automação Web', {
   })
 
   it('acessar página de campos personalizados', function () {
-    cy.get('.widget-title').should('contain.text', 'Campos Personalizados')
+    cy.get('.widget-title')
+      .should('contain.text', 'Campos Personalizados')
   })
 
   it('criar campo personalizado', function () {
-    const randomText = 'Campo ' + faker.word.noun()
+    const randomText = `Campo ${faker.word.noun()}`
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('not.contain.text', randomText)
-    cy.get('input[name="name"]').type(randomText)
-    cy.get('.btn').contains('Novo Campo Personalizado').click()
+    cy.getTableBody()
+      .as('customFieldTbody')
+      .should('not.contain.text', randomText)
 
-    cy.get('.widget-title').should('contain.text', 'Alterar campo personalizado')
-    cy.get('.btn').contains('Atualizar Campo Personalizado').click()
-    cy.get('p.bold.bigger-110').should('be.visible').and('contain.text', 'Operação realizada com sucesso')
+    cy.get('input[name="name"]')
+      .type(randomText)
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('contain.text', randomText)
+    cy.get('.btn')
+      .contains('Novo Campo Personalizado').click()
+
+    cy.get('.widget-title')
+      .should('contain.text', 'Alterar campo personalizado')
+
+    cy.get('.btn')
+      .contains('Atualizar Campo Personalizado')
+      .click()
+
+    cy.get('p.bold.bigger-110')
+      .should('be.visible')
+      .and('contain.text', 'Operação realizada com sucesso')
+
+    cy.get('@customFieldTbody')
+      .should('contain.text', randomText)
   })
 
   it('validar uso de campo personalizado', function () {
-    const randomText = 'Campo ' + faker.word.noun()
+    const randomText = `Campo ${faker.word.noun()}`
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('not.contain.text', randomText)
-    cy.get('input[name="name"]').type(randomText)
-    cy.get('.btn').contains('Novo Campo Personalizado').click()
+    cy.getTableBody()
+      .as('customFieldTbody')
+      .should('not.contain.text', randomText)
 
-    cy.get(':nth-child(11) > :nth-child(2) > label > .lbl').click()
+    cy.get('input[name="name"]')
+      .type(randomText)
 
-    cy.get('#custom-field-access-level-r').select('relator')
-    cy.get('#custom-field-access-level-rw').select('relator')
+    cy.get('.btn')
+      .contains('Novo Campo Personalizado').click()
 
-    cy.get('.btn').contains('Atualizar Campo Personalizado').click()
+    cy.get(':nth-child(11) > :nth-child(2) > label > .lbl') // checkbox Mostrar ao atualizar tarefas
+      .click()
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('contain.text', randomText)
+    cy.get('#custom-field-access-level-r')
+      .select('relator')
 
-    cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a')
-      .each(($elm) => {
-        if ($elm.text() === randomText) {
-          cy.wrap($elm).click()
-        }
+    cy.get('#custom-field-access-level-rw')
+      .select('relator')
+
+    cy.get('.btn')
+      .contains('Atualizar Campo Personalizado')
+      .click()
+
+    cy.get('@customFieldTbody')
+      .should('contain.text', randomText)
+
+    cy.get('@customFieldTbody')
+      .within(() => {
+        cy.get('tr > td:nth-child(1) > a')
+          .each(($elm) => {
+            if ($elm.text() === randomText) {
+              cy.wrap($elm)
+                .click()
+            }
+          })
       })
 
-    cy.get('#custom-field-project-id').select('- Projeto default')
-    cy.get('.btn').contains('Vincular Campo Personalizado').click()
+    cy.get('#custom-field-project-id')
+      .select('- Projeto default')
 
-    cy.get('[href="bug_report_page.php"]').click()
+    cy.get('.btn')
+      .contains('Vincular Campo Personalizado')
+      .click()
+
+    cy.get('[href="bug_report_page.php"]')
+      .click()
 
     cy.get('h4')
       .then($titulo => {
         if ($titulo.text().includes('Escolher Projeto')) {
-          cy.get('#select-project-id').select('- Projeto default')
-          cy.get('.btn').contains('Selecionar Projeto').click()
+          cy.get('#select-project-id')
+            .select('- Projeto default')
+
+          cy.get('.btn')
+            .contains('Selecionar Projeto')
+            .click()
         }
       })
-    cy.get('#category_id').select('[Todos os Projetos] General')
-    cy.get('.category').should('contain.text', randomText)
+    cy.get('#category_id')
+      .select('[Todos os Projetos] General')
+
+    cy.get('.category')
+      .should('contain.text', randomText)
   })
 
   it('apagar campo personalizado', function () {
-    const randomText = 'Campo ' + faker.word.noun()
+    const randomText = `Campo ${faker.word.noun()}`
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('not.contain.text', randomText)
-    cy.get('input[name="name"]').type(randomText)
-    cy.get('.btn').contains('Novo Campo Personalizado').click()
+    cy.getTableBody()
+      .as('customFieldTbody')
+      .should('not.contain.text', randomText)
 
-    cy.get(':nth-child(11) > :nth-child(2) > label > .lbl').click()
+    cy.get('input[name="name"]')
+      .type(randomText)
 
-    cy.get('#custom-field-access-level-r').select('relator')
-    cy.get('#custom-field-access-level-rw').select('relator')
+    cy.get('.btn')
+      .contains('Novo Campo Personalizado')
+      .click()
 
-    cy.get('.btn').contains('Atualizar Campo Personalizado').click()
+    cy.get(':nth-child(11) > :nth-child(2) > label > .lbl') // checkbox Mostrar ao atualizar tarefas
+      .click()
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('contain.text', randomText)
+    cy.get('#custom-field-access-level-r')
+      .select('relator')
 
-    cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a')
-      .each(($elm) => {
-        if ($elm.text() === randomText) {
-          cy.wrap($elm).click()
-        }
+    cy.get('#custom-field-access-level-rw')
+      .select('relator')
+
+    cy.get('.btn')
+      .contains('Atualizar Campo Personalizado')
+      .click()
+
+    cy.get('@customFieldTbody')
+      .should('contain.text', randomText)
+
+    cy.get('@customFieldTbody')
+      .within(() => {
+        cy.get('tr > td:nth-child(1) > a')
+          .each(($elm) => {
+            if ($elm.text() === randomText) {
+              cy.wrap($elm)
+                .click()
+            }
+          })
       })
 
-    cy.get('.btn').contains('Apagar Campo Personalizado').click()
-    cy.get('p.bigger-110').should('be.visible').and('contain.text', 'Você tem certeza que deseja apagar o campo personalizado "' + randomText + '" e todos os seus valores associados?')
-    cy.get('.btn').contains('Apagar Campo').click()
-    cy.get('p.bold.bigger-110').should('be.visible').and('contain.text', 'Operação realizada com sucesso')
+    cy.get('.btn')
+      .contains('Apagar Campo Personalizado')
+      .click()
 
-    cy.get('.widget-main > .table-responsive > .table > tbody').should('not.contain.text', randomText)
+    cy.get('p.bigger-110')
+      .should('be.visible')
+      .and('contain.text', `Você tem certeza que deseja apagar o campo personalizado "${randomText}" e todos os seus valores associados?`)
+
+    cy.get('.btn')
+      .contains('Apagar Campo')
+      .click()
+
+    cy.get('p.bold.bigger-110')
+      .should('be.visible')
+      .and('contain.text', 'Operação realizada com sucesso')
+
+    cy.get('@customFieldTbody')
+      .should('not.contain.text', randomText)
   })
 })

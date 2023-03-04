@@ -1,7 +1,6 @@
 import { defineConfig } from 'cypress'
-
+import * as fs from 'fs'
 const xlsx = require('node-xlsx').default
-const fs = require('fs')
 const readXlsx = require('./cypress/support/readXlsx')
 const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 

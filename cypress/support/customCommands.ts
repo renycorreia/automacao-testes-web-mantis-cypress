@@ -30,6 +30,8 @@ declare namespace Cypress {
     */
     validaSessaoAplicacao: () => Chainable<any>
 
+    getTableBody: () => Chainable<any>
+
     api_createProject: (project: any) => Chainable<any>
 
     api_getAllProjects: () => Chainable<any>

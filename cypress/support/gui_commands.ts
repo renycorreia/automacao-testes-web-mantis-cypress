@@ -167,3 +167,7 @@ Cypress.Commands.add('gui_apagaTodosUsuarioSemUso', () => {
       }
     })
 })
+
+Cypress.Commands.add('getTableBody', () => {
+  cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody')
+})

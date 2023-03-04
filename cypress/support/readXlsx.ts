@@ -1,5 +1,5 @@
-const fs = require('fs')
-const XLSX = require('xlsx')
+import fs = require('fs')
+import XLSX = require('xlsx')
 
 const read = ({ file, sheet }): any => {
   const buf = fs.readFileSync(file)
