@@ -69,22 +69,34 @@ Cypress.Commands.add('validaSessaoAplicacao', () => {
 Cypress.Commands.add('gui_apagaTodosCamposCustomizado', () => {
   let aux = 0
 
-  cy.visit('/manage_custom_field_page.php')
-  cy.validaSessaoAplicacao()
-  cy.get('.widget-body')
-    .then($table => {
-      if ($table.find('.widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a').length > 0) {
-        cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a')
+  cy.acessarMenuLateral('Gerenciar')
+  cy.acessarSubmenuGerenciamento('Gerenciar Campos Personalizados')
+  cy.getTableBody()
+    .as('customFieldTbody')
+    .within($table => {
+      if ($table.find('tr > td:nth-child(1) > a').length > 0) {
+        cy.get('tr > td:nth-child(1) > a')
           .then($campos => {
             aux = $campos.length
             for (let index = 0; index < aux; index++) {
-              cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a').first().click()
-              cy.get('.btn').contains('Apagar Campo Personalizado').click()
-              cy.get('p.bigger-110').should('be.visible')
-              cy.get('.btn').contains('Apagar Campo').click()
-              cy.wait(3000)
-              cy.visit('/manage_custom_field_page.php')
-              cy.validaSessaoAplicacao()
+              cy.get('tr > td:nth-child(1) > a').first().click()
+
+              cy.document().within(() => {
+                cy.get('.btn')
+                  .contains('Apagar Campo Personalizado')
+                  .click()
+
+                cy.get('p.bigger-110')
+                  .should('be.visible')
+
+                cy.get('.btn')
+                  .contains('Apagar Campo')
+                  .click()
+
+                cy.wait(3000)
+                cy.acessarMenuLateral('Gerenciar')
+                cy.acessarSubmenuGerenciamento('Gerenciar Campos Personalizados')
+              })
             }
           })
       }
@@ -93,50 +105,80 @@ Cypress.Commands.add('gui_apagaTodosCamposCustomizado', () => {
 
 Cypress.Commands.add('gui_apagaTodasCategoriasPossiveis', () => {
   let aux = 0
-  cy.visit('/manage_proj_page.php')
-  cy.validaSessaoAplicacao()
-  cy.get('#categories > .widget-box > .widget-body')
-    .then($table => {
-      if ($table.find('.widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1)').length > 1) {
-        cy.get('#categories > .widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1)')
-          .then($campos => {
-            aux = $campos.length
-            for (let index = 0; index < aux; index++) {
-              cy.get('#categories > .widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1)')
-                .then($categoria => {
-                  if ($categoria.text() !== 'General') {
-                    cy.get('#categories > .widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody > tr > td:nth-child(3)').first().contains('Apagar').click()
-                    cy.get('p').should('be.visible')
-                    cy.get('.btn').contains('Apagar Categoria').click()
-                    cy.wait(3000)
-                    cy.visit('/manage_proj_page.php')
-                    cy.validaSessaoAplicacao()
-                  }
-                })
-            }
-          })
-      }
+  cy.acessarMenuLateral('Gerenciar')
+  cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
+  cy.get('#categories')
+    .within(() => {
+      cy.getTableBody()
+        .as('categoryTbody')
+        .within($table => {
+          if ($table.find('tr > td:nth-child(1)').length > 1) {
+            cy.get('tr > td:nth-child(1)')
+              .then($campos => {
+                aux = $campos.length
+                for (let index = 0; index < aux; index++) {
+                  cy.get('tr > td:nth-child(1)')
+                    .then($categoria => {
+                      if ($categoria.text() !== 'General') {
+                        cy.get('tr > td:nth-child(3)')
+                          .first()
+                          .contains('Apagar')
+                          .click()
+                        cy.document()
+                          .within(() => {
+                            cy.get('p')
+                              .should('be.visible')
+
+                            cy.get('.btn')
+                              .contains('Apagar Categoria')
+                              .click()
+
+                            cy.wait(3000)
+                            cy.acessarMenuLateral('Gerenciar')
+                            cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
+                          })
+                      }
+                    })
+                }
+              })
+          }
+        })
     })
 })
 
 Cypress.Commands.add('gui_apagaTodosMarcadores', () => {
   let aux = 0
-  cy.visit('/manage_tags_page.php')
-  cy.validaSessaoAplicacao()
-  cy.get('.widget-body')
-    .then($table => {
-      if ($table.find('.widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1)').length > 0) {
-        cy.get('.widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1) > a')
+  cy.acessarMenuLateral('Gerenciar')
+  cy.acessarSubmenuGerenciamento('Gerenciar Marcadores')
+  cy.getTableBody()
+    .as('tagTbody')
+    .within($table => {
+      if ($table.find('tr > td:nth-child(1)').length > 0) {
+        cy.get('tr > td:nth-child(1) > a')
           .then($campos => {
             aux = $campos.length
             for (let index = 0; index < aux; index++) {
-              cy.get('.widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1) > a').first().click()
-              cy.get('.btn').contains('Apagar Marcador').click()
-              cy.get('p.bigger-110').should('be.visible').and('contain.text', 'Você tem certeza que quer apagar esse marcador?')
-              cy.get('.btn').contains('Apagar Marcador').click()
-              cy.wait(3000)
-              cy.visit('/manage_tags_page.php')
-              cy.validaSessaoAplicacao()
+              cy.get('tr > td:nth-child(1) > a')
+                .first()
+                .click()
+              cy.document()
+                .within(() => {
+                  cy.get('.btn')
+                    .contains('Apagar Marcador')
+                    .click()
+
+                  cy.get('p.bigger-110')
+                    .should('be.visible')
+                    .and('contain.text', 'Você tem certeza que quer apagar esse marcador?')
+
+                  cy.get('.btn')
+                    .contains('Apagar Marcador')
+                    .click()
+
+                  cy.wait(3000)
+                  cy.acessarMenuLateral('Gerenciar')
+                  cy.acessarSubmenuGerenciamento('Gerenciar Marcadores')
+                })
             }
           })
       }
@@ -145,23 +187,48 @@ Cypress.Commands.add('gui_apagaTodosMarcadores', () => {
 
 Cypress.Commands.add('gui_apagaTodosUsuarioSemUso', () => {
   let aux = 0
-  cy.visit('/manage_user_page.php?sort=username&dir=ASC&save=1&hideinactive=0&showdisabled=0&filter=UNUSED&search=')
-  cy.validaSessaoAplicacao()
-  cy.get('.widget-box > .widget-body')
-    .then($table => {
-      if ($table.find('.widget-main > .table-responsive > .table > tbody > tr > td:nth-child(1)').length > 0) {
-        cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a')
+  cy.acessarMenuLateral('Gerenciar')
+  cy.acessarSubmenuGerenciamento('Gerenciar Usuários')
+  cy.get('.btn')
+    .contains('NÃO UTILIZADO')
+    .click()
+
+  cy.wait(3000)
+
+  cy.getTableBody()
+    .as('userTbody')
+    .within($table => {
+      if ($table.find('tr > td:nth-child(1)').length > 0) {
+        cy.get('tr > td:nth-child(1) > a')
           .then($campos => {
             aux = $campos.length
             for (let index = 0; index < aux; index++) {
-              cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody> tr > td:nth-child(1) > a').first().click()
+              cy.get('tr > td:nth-child(1) > a')
+                .first()
+                .click()
               cy.wait(3000)
-              cy.get('.btn').contains('Apagar Usuário').click()
-              cy.get('p.bigger-110').should('be.visible')
-              cy.get('.btn').contains('Apagar Conta').click()
-              cy.wait(3000)
-              cy.visit('/manage_user_page.php?sort=username&dir=ASC&save=1&hideinactive=0&showdisabled=0&filter=UNUSED&search=')
-              cy.validaSessaoAplicacao()
+              cy.document()
+                .within(() => {
+                  cy.get('.btn')
+                    .contains('Apagar Usuário')
+                    .click()
+
+                  cy.get('p.bigger-110')
+                    .should('be.visible')
+
+                  cy.get('.btn')
+                    .contains('Apagar Conta')
+                    .click()
+
+                  cy.wait(3000)
+                  cy.acessarMenuLateral('Gerenciar')
+                  cy.acessarSubmenuGerenciamento('Gerenciar Usuários')
+                  cy.get('.btn')
+                    .contains('NÃO UTILIZADO')
+                    .click()
+
+                  cy.wait(3000)
+                })
             }
           })
       }

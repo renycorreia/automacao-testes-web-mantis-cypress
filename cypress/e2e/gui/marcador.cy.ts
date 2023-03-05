@@ -1,7 +1,7 @@
 /// <reference types = "Cypress" />
 import { faker } from '@faker-js/faker'
 
-describe('Desafio Base2 | Automação Web', {
+describe('Marcador | Desafio Base2 | Automação Web', {
   retries: {
     runMode: 3,
     openMode: 1
@@ -10,13 +10,13 @@ describe('Desafio Base2 | Automação Web', {
   const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
   before(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.gui_apagaTodosMarcadores()
     cy.api_deleteAllProjects()
   })
 
   beforeEach(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Marcadores')
   })
@@ -82,7 +82,7 @@ describe('Desafio Base2 | Automação Web', {
       marcadores.push(randomText)
     }
 
-    marcadores.forEach(element => {
+    marcadores.forEach((element: any) => {
       const aux = element.split('')[0].toUpperCase()
 
       cy.get(`[href="manage_tags_page.php?filter=${aux}`)

@@ -11,7 +11,7 @@ const projetoAuxiliar = {
   description: faker.commerce.productDescription()
 }
 
-describe('Desafio Base2 | Automação Web', {
+describe('Tarefa | Desafio Base2 | Automação Web', {
   retries: {
     runMode: 3,
     openMode: 1
@@ -26,7 +26,7 @@ describe('Desafio Base2 | Automação Web', {
   })
 
   beforeEach(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.visit('/bug_report_page.php')
   })
 

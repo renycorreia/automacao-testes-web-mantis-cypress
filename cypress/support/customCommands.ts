@@ -6,9 +6,7 @@ declare namespace Cypress {
     * @param {string} password
     * @param {any} cache
     */
-    login: (login: any, password: any, cache: any) => Chainable<any>
-
-    loginVazio: () => Chainable<any>
+    login: (login?: any, password?: any, cache?: any) => Chainable<any>
 
     /**
     * Acessar Menu Lateral

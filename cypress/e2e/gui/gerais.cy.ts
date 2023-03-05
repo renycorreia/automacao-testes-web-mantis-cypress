@@ -1,13 +1,13 @@
 /// <reference types = "Cypress" />
 
-describe('Desafio Base2 | Automação Web', {
+describe('Gerais| Desafio Base2 | Automação Web', {
   retries: {
     runMode: 3,
     openMode: 1
   }
 }, () => {
   beforeEach(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.visit('/')
   })
 

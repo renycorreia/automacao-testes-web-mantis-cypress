@@ -1,7 +1,7 @@
 /// <reference types = "Cypress" />
 import { faker } from '@faker-js/faker'
 
-describe('Desafio Base2 | Automação Web', {
+describe('Projeto | Desafio Base2 | Automação Web', {
   retries: {
     runMode: 3,
     openMode: 1
@@ -12,7 +12,7 @@ describe('Desafio Base2 | Automação Web', {
   })
 
   beforeEach(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.visit('/')
   })
 

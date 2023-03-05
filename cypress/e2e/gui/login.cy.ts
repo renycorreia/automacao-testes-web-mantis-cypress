@@ -1,13 +1,17 @@
 /// <reference types = "Cypress" />
 
-describe('Desafio Base2 | Automação Web', {
+describe('Login | Desafio Base2 | Automação Web', {
   retries: {
     runMode: 3,
     openMode: 1
   }
 }, () => {
   it('validar login', function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), false)
+    const user = Cypress.env('user_name')
+    const password = Cypress.env('user_password')
+    const options = { cacheSession: false }
+
+    cy.login(user, password, options)
     cy.visit('/')
     cy.get('address').should('be.visible').contains('MantisBT')
   })

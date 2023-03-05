@@ -6,7 +6,7 @@ const projetoDefault = {
   description: faker.commerce.productDescription()
 }
 
-describe('Desafio Base2 | Automação Web', {
+describe('Categoria | Desafio Base2 | Automação Web', {
   retries: {
     runMode: 3,
     openMode: 1
@@ -15,14 +15,14 @@ describe('Desafio Base2 | Automação Web', {
   const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
   before(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.gui_apagaTodasCategoriasPossiveis()
     cy.api_deleteAllProjects()
     cy.api_createProject(projetoDefault)
   })
 
   beforeEach(function () {
-    cy.login(Cypress.env('user_name'), Cypress.env('user_password'), true)
+    cy.login()
     cy.visit('/')
   })
 
