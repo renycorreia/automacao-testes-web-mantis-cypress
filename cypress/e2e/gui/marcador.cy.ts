@@ -144,9 +144,11 @@ describe('Desafio Base2 | Automação Web', {
       .click()
 
     cy.get('@tagTbody')
-      .within(() => {
-        cy.get('tr > td:nth-child(1)')
-          .should('not.contain.text', randomText)
+      .within($body => {
+        if ($body.find('tr > td:nth-child(1)').length > 0) {
+          cy.get('tr > td:nth-child(1)')
+            .should('not.contain.text', randomText)
+        }
       })
   })
 })
