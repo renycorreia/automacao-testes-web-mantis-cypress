@@ -14,26 +14,26 @@ describe('Campo Personalizado | Desafio Base2 | Automação Web', {
 }, () => {
   const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
-  before(function () {
+  before(() => {
     cy.login()
     cy.gui_apagaTodosCamposCustomizado()
     cy.api_deleteAllProjects()
     cy.api_createProject(projetoDefault)
   })
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Campos Personalizados')
     cy.wait(TRHEE_SECONDS_IN_MILLISECONDS)
   })
 
-  it('acessar página de campos personalizados', function () {
+  it('acessar página de campos personalizados', () => {
     cy.get('.widget-title')
       .should('contain.text', 'Campos Personalizados')
   })
 
-  it('criar campo personalizado', function () {
+  it('criar campo personalizado', () => {
     const randomText = `Campo ${faker.word.noun()}`
 
     cy.getTableBody()
@@ -61,7 +61,7 @@ describe('Campo Personalizado | Desafio Base2 | Automação Web', {
       .should('contain.text', randomText)
   })
 
-  it('validar uso de campo personalizado', function () {
+  it('validar uso de campo personalizado', () => {
     const randomText = `Campo ${faker.word.noun()}`
 
     cy.getTableBody()
@@ -129,7 +129,7 @@ describe('Campo Personalizado | Desafio Base2 | Automação Web', {
       .should('contain.text', randomText)
   })
 
-  it('apagar campo personalizado', function () {
+  it('apagar campo personalizado', () => {
     const randomText = `Campo ${faker.word.noun()}`
 
     cy.getTableBody()

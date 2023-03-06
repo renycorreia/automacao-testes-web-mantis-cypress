@@ -6,7 +6,7 @@ describe('Login | Desafio Base2 | Automação Web', {
     openMode: 1
   }
 }, () => {
-  it('validar login', function () {
+  it('validar login', () => {
     const user = Cypress.env('user_name')
     const password = Cypress.env('user_password')
     const options = { cacheSession: false }

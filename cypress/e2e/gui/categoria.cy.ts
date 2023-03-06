@@ -14,19 +14,19 @@ describe('Categoria | Desafio Base2 | Automação Web', {
 }, () => {
   const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
-  before(function () {
+  before(() => {
     cy.login()
     cy.gui_apagaTodasCategoriasPossiveis()
     cy.api_deleteAllProjects()
     cy.api_createProject(projetoDefault)
   })
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.visit('/')
   })
 
-  it('criar categoria', function () {
+  it('criar categoria', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -49,7 +49,7 @@ describe('Categoria | Desafio Base2 | Automação Web', {
       .should('contain.text', randomText)
   })
 
-  it('criar e editar categoria', function () {
+  it('criar e editar categoria', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -83,7 +83,7 @@ describe('Categoria | Desafio Base2 | Automação Web', {
       .should('contain.text', randomText)
   })
 
-  it('alterar categoria já criada', function () {
+  it('alterar categoria já criada', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -138,7 +138,7 @@ describe('Categoria | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('apagar categoria', function () {
+  it('apagar categoria', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 

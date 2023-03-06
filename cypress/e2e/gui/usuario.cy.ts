@@ -17,13 +17,13 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Usuários')
   })
 
-  it('validar filtro alfanumérico', function () {
+  it('validar filtro alfanumérico', () => {
     cy.get('.btn-group > .active')
       .should('have.text', 'TODOS')
       .and('have.attr', 'href')
@@ -31,7 +31,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       .and('include', '&hideinactive=0&showdisabled=0&filter=ALL&search=')
   })
 
-  it('criar usuario dados minimos', function () {
+  it('criar usuario dados minimos', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -67,7 +67,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar usuario dados minimos e edita', function () {
+  it('criar usuario dados minimos e edita', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -119,7 +119,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar usuario - visualizador', function () {
+  it('criar usuario - visualizador', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -164,7 +164,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar usuario - atualizador', function () {
+  it('criar usuario - atualizador', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -209,7 +209,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar usuario - desenvolvedor', function () {
+  it('criar usuario - desenvolvedor', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -254,7 +254,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar usuario - gerente', function () {
+  it('criar usuario - gerente', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -299,7 +299,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('buscar usuario pelo login exato', function () {
+  it('buscar usuario pelo login exato', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -344,7 +344,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('excluir usuário', function () {
+  it('excluir usuário', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -403,7 +403,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       .should('not.contain.text', userName)
   })
 
-  it('buscar usuario pelo nome exato', function () {
+  it('buscar usuario pelo nome exato', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -449,7 +449,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('buscar usuario pelo primeiro nome', function () {
+  it('buscar usuario pelo primeiro nome', () => {
     const firstName = 'Joaquim'
 
     Cypress._.times(2, () => {
@@ -499,7 +499,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('buscar usuario pelo email', function () {
+  it('buscar usuario pelo email', () => {
     cy.get('.btn')
       .contains('Criar nova conta')
       .click()
@@ -545,7 +545,7 @@ describe('Usuário | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar usuario - Data-Driven', function () {
+  it('criar usuario - Data-Driven', () => {
     cy.fixture('newUsers')
       .then((data) => {
         data.newUsers.forEach((element: any) => {

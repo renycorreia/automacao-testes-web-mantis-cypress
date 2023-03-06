@@ -19,18 +19,18 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
 }, () => {
   const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
-  before(function () {
+  before(() => {
     cy.api_deleteAllProjects()
     cy.api_createProject(projetoDefault)
     cy.api_createProject(projetoAuxiliar)
   })
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.visit('/bug_report_page.php')
   })
 
-  it('criar tarefa', function () {
+  it('criar tarefa', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -74,7 +74,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .and('contain.text', 'Operação realizada com sucesso.')
   })
 
-  it('criar tarefa e validar tarefa na lista', function () {
+  it('criar tarefa e validar tarefa na lista', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -135,7 +135,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
     })
   })
 
-  it('criar tarefa e criar clone', function () {
+  it('criar tarefa e criar clone', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -231,7 +231,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', `${resumo} Clone`)
   })
 
-  it('apagar tarefa', function () {
+  it('apagar tarefa', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
     cy.get('.scrollable-menu > ul > li > a')
@@ -296,7 +296,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
     })
   })
 
-  it('criar tarefa e validar tarefa criada', function () {
+  it('criar tarefa e validar tarefa criada', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -353,7 +353,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', resumo)
   })
 
-  it('criar tarefa e alterar status - de: novo para: retorno', function () {
+  it('criar tarefa e alterar status - de: novo para: retorno', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -420,7 +420,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'retorno')
   })
 
-  it('criar tarefa e alterar status - de: novo para: admitido', function () {
+  it('criar tarefa e alterar status - de: novo para: admitido', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -485,7 +485,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'admitido')
   })
 
-  it('criar tarefa e alterar status - de: novo para: confirmado', function () {
+  it('criar tarefa e alterar status - de: novo para: confirmado', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -550,7 +550,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'confirmado')
   })
 
-  it('criar tarefa e alterar status - de: novo para: atribuído', function () {
+  it('criar tarefa e alterar status - de: novo para: atribuído', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -615,7 +615,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'atribuído')
   })
 
-  it('criar tarefa e alterar status - de: novo para: resolvido', function () {
+  it('criar tarefa e alterar status - de: novo para: resolvido', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -680,7 +680,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'resolvido')
   })
 
-  it('criar tarefa e alterar status - de: novo para: fechado', function () {
+  it('criar tarefa e alterar status - de: novo para: fechado', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -744,7 +744,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'fechado')
   })
 
-  it('reabrir tarefa', function () {
+  it('reabrir tarefa', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 
@@ -821,7 +821,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
       .should('contain.text', 'retorno')
   })
 
-  it('desassociar tarefa do projeto', function () {
+  it('desassociar tarefa do projeto', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa').click()
     cy.get('.scrollable-menu > ul > li > a')
       .each(($elm) => {
@@ -889,7 +889,7 @@ describe('Tarefa | Desafio Base2 | Automação Web', {
     })
   })
 
-  it('criar tarefa e adicionar anexo', function () {
+  it('criar tarefa e adicionar anexo', () => {
     cy.get('#dropdown_projects_menu > .dropdown-toggle > .fa')
       .click()
 

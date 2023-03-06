@@ -238,3 +238,13 @@ Cypress.Commands.add('gui_apagaTodosUsuarioSemUso', () => {
 Cypress.Commands.add('getTableBody', () => {
   cy.get('.widget-box > .widget-body > .widget-main > .table-responsive > .table > tbody')
 })
+
+Cypress.Commands.add('defineIdiomaPtBr', () => {
+  cy.visit('/account_prefs_page.php')
+
+  cy.get('#language')
+    .select('portuguese_brazil')
+
+  cy.get('[form="account-prefs-update-form"]')
+    .click()
+})

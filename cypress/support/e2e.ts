@@ -6,7 +6,7 @@ import './gui_commands'
 import addContext from 'mochawesome/addContext'
 import '@shelex/cypress-allure-plugin'
 
-afterEach(function () {
+afterEach(() => {
   cy.screenshot({ capture: 'runner' })
 })
 
@@ -16,6 +16,11 @@ Cypress.on('test:after:run', test => {
     filename = `${test.title} -- after each hook.png`
     addMochaContext(test, filename)
   }
+})
+
+before(() => {
+  cy.login()
+  cy.defineIdiomaPtBr()
 })
 
 function addMochaContext (test: Cypress.ObjectLike, filename: string): void {

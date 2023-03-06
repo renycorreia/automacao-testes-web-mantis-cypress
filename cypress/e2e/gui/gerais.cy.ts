@@ -6,12 +6,12 @@ describe('Gerais| Desafio Base2 | Automação Web', {
     openMode: 1
   }
 }, () => {
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.visit('/')
   })
 
-  it('acessar página de gerenciamento', function () {
+  it('acessar página de gerenciamento', () => {
     cy.get('#sidebar > .nav-list > li > a')
       .each(($op) => {
         const href = $op.attr('href')
@@ -24,7 +24,7 @@ describe('Gerais| Desafio Base2 | Automação Web', {
     cy.get('#manage-overview-table').should('be.visible')
   })
 
-  it('acessar página de resumo', function () {
+  it('acessar página de resumo', () => {
     cy.get('#sidebar > .nav-list > li > a')
       .each(($op) => {
         const href = $op.attr('href')

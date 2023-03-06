@@ -9,19 +9,19 @@ describe('Marcador | Desafio Base2 | Automação Web', {
 }, () => {
   const TRHEE_SECONDS_IN_MILLISECONDS = 3000
 
-  before(function () {
+  before(() => {
     cy.login()
     cy.gui_apagaTodosMarcadores()
     cy.api_deleteAllProjects()
   })
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Marcadores')
   })
 
-  it('acessar página de marcadores', function () {
+  it('acessar página de marcadores', () => {
     cy.get('.widget-title')
       .should('contain.text', 'Gerenciar Marcadores')
 
@@ -29,14 +29,14 @@ describe('Marcador | Desafio Base2 | Automação Web', {
       .should('contain.text', 'Criar Marcador')
   })
 
-  it('validar filtro alfanumérico', function () {
+  it('validar filtro alfanumérico', () => {
     cy.get('.btn-group > .active')
       .should('have.text', 'TODAS')
       .and('have.attr', 'href')
       .and('include', 'manage_tags_page.php?filter=ALL')
   })
 
-  it('criar marcador', function () {
+  it('criar marcador', () => {
     const randomText = `${faker.word.noun()} Marcador`
 
     cy.getTableBody()
@@ -62,7 +62,7 @@ describe('Marcador | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('criar vários marcadores', function () {
+  it('criar vários marcadores', () => {
     const marcadores = []
 
     for (let index = 0; index < Math.floor(Math.random() * 5) + 2; index++) {
@@ -96,7 +96,7 @@ describe('Marcador | Desafio Base2 | Automação Web', {
     })
   })
 
-  it('apagar marcador', function () {
+  it('apagar marcador', () => {
     const randomText = `${faker.word.noun()} Marcador`
 
     cy.getTableBody()

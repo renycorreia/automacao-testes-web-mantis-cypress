@@ -7,16 +7,16 @@ describe('Projeto | Desafio Base2 | Automação Web', {
     openMode: 1
   }
 }, () => {
-  before(function () {
+  before(() => {
     cy.api_deleteAllProjects()
   })
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.login()
     cy.visit('/')
   })
 
-  it('acessar pagina de projetos', function () {
+  it('acessar pagina de projetos', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -27,7 +27,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       .should('contain.text', 'Categorias Globais')
   })
 
-  it('criar projeto', function () {
+  it('criar projeto', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -53,7 +53,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       .should('contain.text', randomText)
   })
 
-  it('editar nome projeto', function () {
+  it('editar nome projeto', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -96,7 +96,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       .should('contain.text', reverseString(randomText))
   })
 
-  it('editar estado projeto', function () {
+  it('editar estado projeto', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -148,7 +148,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('desabilitar projeto', function () {
+  it('desabilitar projeto', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -221,7 +221,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       .click()
   })
 
-  it('habilitar projeto desabilitado', function () {
+  it('habilitar projeto desabilitado', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -307,7 +307,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('editar visibilidade projeto', function () {
+  it('editar visibilidade projeto', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 
@@ -361,7 +361,7 @@ describe('Projeto | Desafio Base2 | Automação Web', {
       })
   })
 
-  it('apagar projeto', function () {
+  it('apagar projeto', () => {
     cy.acessarMenuLateral('Gerenciar')
     cy.acessarSubmenuGerenciamento('Gerenciar Projetos')
 

@@ -45,5 +45,7 @@ declare namespace Cypress {
     gui_apagaTodosMarcadores: () => Chainable<any>
 
     gui_apagaTodosUsuarioSemUso: () => Chainable<any>
+
+    defineIdiomaPtBr: () => Chainable<any>
   }
 }
