@@ -47,5 +47,7 @@ declare namespace Cypress {
     gui_apagaTodosUsuarioSemUso: () => Chainable<any>
 
     defineIdiomaPtBr: () => Chainable<any>
+
+    realizarLogoff: () => Chainable<any>
   }
 }

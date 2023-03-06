@@ -248,3 +248,13 @@ Cypress.Commands.add('defineIdiomaPtBr', () => {
   cy.get('[form="account-prefs-update-form"]')
     .click()
 })
+
+Cypress.Commands.add('realizarLogoff', () => {
+  cy.get('body').then($body => {
+    if ($body.find('#navbar').length > 0) {
+      cy.get('.user-info').click()
+      cy.get('.user-menu > :nth-child(4) > a')
+        .click()
+    }
+  })
+})

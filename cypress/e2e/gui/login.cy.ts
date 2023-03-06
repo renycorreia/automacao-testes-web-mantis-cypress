@@ -11,6 +11,8 @@ describe('Login | Desafio Base2 | Automação Web', {
     const password = Cypress.env('user_password')
     const options = { cacheSession: false }
 
+    cy.realizarLogoff()
+
     cy.login(user, password, options)
     cy.visit('/')
     cy.get('address').should('be.visible').contains('MantisBT')
