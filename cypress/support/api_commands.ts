@@ -1,4 +1,11 @@
-const accessToken = `${Cypress.env('mantis_access_token')}`
+
+if (Cypress.env('environment') === 'homolog') {
+  Cypress.env('data', Cypress.env('homologData'))
+} else {
+  Cypress.env('data', Cypress.env('localData'))
+}
+
+const accessToken = Cypress.env('data').mantis_access_token
 
 Cypress.Commands.add('api_createProject', project => {
   cy.request({

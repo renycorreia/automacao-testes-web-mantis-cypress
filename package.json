@@ -17,7 +17,8 @@
   },
   "scripts": {
     "cy:open": "cypress open",
-    "cy:run": "cypress run",
+    "test": "cypress run",
+    "test:homolog": "cypress run --config baseUrl=https://josueandradepascoa.mantishub.io/ --env environment=homolog",
     "cy:run:chrome": "cypress run --browser chrome",
     "cy:run:edge": "cypress run --browser edge",
     "cy:specs": "cypress run --reporter mocha-allure-reporter",

@@ -20,8 +20,12 @@ describe('Gerais| Desafio Base2 | Automação Web', {
         }
       })
 
-    cy.get('.widget-title').should('contain.text', 'Informação do Site')
-    cy.get('#manage-overview-table').should('be.visible')
+    if (Cypress.env('environment') === 'homolog') {
+      cy.get('#trial_banner').should('contain.text', 'Trial Version:')
+    } else {
+      cy.get('.widget-title').should('contain.text', 'Informação do Site')
+      cy.get('#manage-overview-table').should('be.visible')
+    }
   })
 
   it('acessar página de resumo', () => {

@@ -7,14 +7,17 @@ describe('Login | Desafio Base2 | Automação Web', {
   }
 }, () => {
   it('validar login', () => {
-    const user = Cypress.env('user_name')
-    const password = Cypress.env('user_password')
-    const options = { cacheSession: false }
-
     cy.realizarLogoff()
 
-    cy.login(user, password, options)
+    const options = { cacheSession: false }
+
+    cy.login(options)
     cy.visit('/')
-    cy.get('address').should('be.visible').contains('MantisBT')
+
+    if (Cypress.env('environment') === 'homolog') {
+      cy.get('#trial_banner').should('contain.text', 'Trial Version:')
+    } else {
+      cy.get('address').should('be.visible').contains('MantisBT')
+    }
   })
 })

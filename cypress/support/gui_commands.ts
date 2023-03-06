@@ -1,8 +1,15 @@
 Cypress.Commands.add('login', (
-  user = Cypress.env('user_name'),
-  password = Cypress.env('user_password'),
   { cacheSession = true } = {}
 ) => {
+  if (Cypress.env('environment') === 'homolog') {
+    Cypress.env('data', Cypress.env('homologData'))
+  } else {
+    Cypress.env('data', Cypress.env('localData'))
+  }
+
+  const user = Cypress.env('data').user_name
+  const password = Cypress.env('data').user_password
+
   const login = (): void => {
     cy.visit('/login_page.php')
 
